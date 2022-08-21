@@ -6,41 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  </head>
  <style>
- 	:root{
- 		--text-color: grey;
- 	}
+  :root{
+    --text-color: grey;
+  }
  .container{
-	max-width:800px;
-	width: 100%;
-	height: 500px;
+  max-width:800px;
+  width: 100%;
+  height: 500px;
 
-	margin-right: auto;
-	margin-left: auto;
-	border: 1px solid black;
-	border-radius: 0.5em;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid black;
+  border-radius: 0.5em;
 }
 .calendario{
-	display: flex;
-	width: 800px;
-	margin-top: 1px;
-	/*flex-wrap: wrap;
-	justify-content: space-between;*/
+  display: flex;
+  width: 800px;
+  margin-top: 1px;
+  /*flex-wrap: wrap;
+  justify-content: space-between;*/
 }
 .dias {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 .dias p{
 
-	text-align: center;
-	width: 100px;
-	height: 40px;
-	
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  
 }
 /*
 explicando o nth-child aqui. nth-child vai selecionar quais os nodes que vc quer alterar
@@ -49,136 +49,154 @@ então vc usa n+2, isso significa que ele vai contar a partir do 2, ele não alt
 do primeiro.
 */
 .dias p:nth-child(n+2){
-	border-left-style: solid;
-	border-right-color: red;
+  border-left-style: solid;
+  border-right-color: red;
 
 }
 .dias p:nth-child(1){
-	color: red;
+  color: red;
 }
 
 ul {
-	list-style-type: none;
-	display: flex;
-	flex-wrap: wrap;
-	width: 800px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;
 }
 li{
-	width: 100px;
-	height: 40px;
-	background-color: white;
-	box-shadow: 10px 5px 8px black;
-	text-align: center;
-	margin:2px 2px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  width: 100px;
+  height: 40px;
+  background-color: white;
+  box-shadow: 10px 5px 8px black;
+  text-align: center;
+  margin:2px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
  <body>
- 	<div class="container">
+  <div class="container">
 
 <label for="weather">Selecione um mês: </label>
 <select id="weather">
   <option value="">Escolha um mês</option>
-  <option value="janeiro">Janeiro</option>
-  <option value="fevereiro">Fevereiro</option>
-  <option value="marco">Março</option>
-  <option value="abril">Aril</option>
-  <option value="maio">Maio</option>
-  <option value="junho">Junho</option>
-  <option value="julho">Julho</option>
-  <option value="agosto">Agosto</option>
-  <option value="stembro">Setembro</option>
-  <option value="outubro">Outubro</option>
-  <option value="novembro">Novembro</option>
-  <option value="dezembro">Dezembro</option>
+  <option value="january">Janeiro</option>
+  <option value="february">Fevereiro</option>
+  <option value="march">Março</option>
+  <option value="april">Aril</option>
+  <option value="may">Maio</option>
+  <option value="june">Junho</option>
+  <option value="july">Julho</option>
+  <option value="august">Agosto</option>
+  <option value="september">Setembro</option>
+  <option value="october">Outubro</option>
+  <option value="november">Novembro</option>
+  <option value="december">Dezembro</option>
 </select>
-	<h1></h1>
-	<div class="dias">
-		<p>dom</p>
-		<p>seg</p>
-		<p>ter</p>
-		<p>qua</p>
-		<p>qui</p>
-		<p>sex</p>
-		<p>sab</p>
-	</div>
-	<div class="calendario">
+  <h1></h1>
+  <div class="dias">
+    <p>dom</p>
+    <p>seg</p>
+    <p>ter</p>
+    <p>qua</p>
+    <p>qui</p>
+    <p>sex</p>
+    <p>sab</p>
+  </div>
+  <div class="calendario">
 <ul>
 
 </ul>
-	</div>
+  </div>
 </div>
 
 
 </body>
 <script >
-	//código que vai dizer qtd de dias de acordo com mês
-	//meses com 30 dias: abril, junho, setembro, novembro
-	//meses com 31 dias: jan, mar, mai, julho, ago, out, dez
-	
-	const select = document.querySelector("select");
-	select.addEventListener("change", (event) => {
-		const escolha = select.value;
+  //código que vai dizer qtd de dias de acordo com mês
+  //meses com 30 dias: abril, junho, setembro, novembro
+  //meses com 31 dias: jan, mar, mai, julho, ago, out, dez
+  
+  const select = document.querySelector("select");
+  select.addEventListener("change", (event) => {
+    const escolha = select.value;
 
-		if (escolha === "abril" || escolha === "junho" || escolha === "setembro" || escolha === "novembro"){
-			dias = 30; 
-			
-		} else if (escolha === "fevereiro"){
-			dias = 28; 
-			console.log(dias);
-		} else {
-			dias = 31;
-		}
-		clearCalendar();
-		criaCalendario();
-		dayColorChanger();
-		today();
-	});
+    if (escolha === "april" || escolha === "june" || escolha === "september" || escolha === "novmber"){
+      dias = 30; 
+      
+    } else if (escolha === "february"){
+      dias = 28; 
+      console.log(dias);
+    } else {
+      dias = 31;
+    }
+    clearCalendar();
+    criaCalendarioAnt();
+    dayColorChanger();
+    today();
+  });
 
 
-	function criaCalendario(){
-		for (let i = 1; i <= dias; i++){
-			const novoItem = document.createElement("li");
-			novoItem.textContent = i;
-			document.querySelector("ul").appendChild(novoItem);
-			//h1.textContent = choice;
-		}
-	}
-	function clearCalendar(){
-		document.querySelector("ul").innerHTML = "";
-	}
-	function dayColorChanger(){
-		var ulParent = document.querySelector("ul");
-    	var child = ulParent.children;
-    	var qtdDias = new Date();
-    	var dia = qtdDias.getDate();
-    	for (let i = 1; i < dia; i++){
+  function criaCalendario(){
+    for (let i = 1; i <= dias; i++){
+      const novoItem = document.createElement("li");
+      novoItem.textContent = i;
+      document.querySelector("ul").appendChild(novoItem);
+    }
+  }
+  function clearCalendar(){
+    document.querySelector("ul").innerHTML = "";
+  }
+  function dayColorChanger(){
+    var ulParent = document.querySelector("ul");
+      var child = ulParent.children;
+      var qtdDias = new Date();
+      var dia = qtdDias.getDate();
+      for (let i = 1; i < dia; i++){
               child[i].style.color = "var(--text-color)";  //do styling here
     }
-	}
-	function today(){
-		var date = new Date();
-		var dia = date.getDate()-1;
-		var child = document.querySelector("ul").children;
-		child[dia].style.color = "red";
-		child[dia].style.textDecoration = "underline";
-	}
+  }
+  function criaCalendarioAnt(){
+    const escolha = select.value;
+    const data = new Date("2022/"+escolha+"/01");
+    var dia = data.getDay();
+    var qtdDiasMes = diasDefiner();
+      function diasDefiner(){
+        if (escolha === "january" || escolha === "february" || escolha === "april" || escolha === "june" || escolha === "july" || escolha === "august" || escolha === "september" || escolha === "november"){
+          return 31;
+        } else if (escolha === "march") {
+          return 28;
+        } else {
+          return 30;
+        }
+        
+      }
+      for (let i = (qtdDiasMes-(dia));i < qtdDiasMes; i++){
+        const novoItem = document.createElement("li");
+        novoItem.textContent = i;
+        document.querySelector("ul").appendChild(novoItem);
+        novoItem.style.color = "var(--text-color)";
+      }
+      criaCalendario();
 
-	
+  
+    console.log("mes é "+escolha);
+    console.log("qtd de dias: "+qtdDiasMes);
+    console.log("dia do mes: "+dia);
+
+  }
+
+  function today(){
+    
+    var data = new Date();
+    var dia = date.getDate()-1;
+    var child = document.querySelector("ul").children;
+    child[dia].style.color = "red";
+    child[dia].style.textDecoration = "underline";
+  }
+
+  
 </script>
 </html>
 
-<!--
-algoritimo para decidir o dia do mes
-
-1. dia do primeiro dia do mes (var dia = new Date("aaaa/mm/dd"))
-2. qtd de dias do mes anterior
-3. subtrair o dia do primeiro do mes (1) da qtd de dias do mes anterior. ex,. mes anterior - (dia do mes-1)
-4. dados para o loop: o loop vai contar de traz pra frente (i--), o length é (qtd de dias do mes anterior - (dia do mes -1))
-
-acho bom colocar esses dados em variaveis
-
-ai o loop do mes normal vai começar em cima do loop anterior
-	-->
